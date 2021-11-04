@@ -133,8 +133,12 @@ public class FlutterBuglyPlugin implements FlutterPlugin, MethodCallHandler, Act
         } else if (call.method.equals("checkUpgrade")) {
             boolean isManual = false;
             boolean isSilence = false;
+            Beta.strToastYourAreTheLatestVersion = "你已经是最新版了"; // reset lastest version toast
             if (call.hasArgument("isManual")) {
                 isManual = call.argument("isManual");
+                if (!isManual) {
+                    Beta.strToastYourAreTheLatestVersion = ""; // remove lastest version toast
+                }
             }
             if (call.hasArgument("isSilence")) {
                 isSilence = call.argument("isSilence");
